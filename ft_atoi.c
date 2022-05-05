@@ -6,7 +6,7 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:42:12 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/02 09:06:27 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:02:26 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	ft_wh_space(char *str)
 {
 	int	i;
-	
+
 	i = 0;
 	while (str[i] == ' ' || str[i] == '	' || str[i] == '\t' \
 	|| str[i] == '\n' || str[i] == '\v' \
@@ -26,38 +26,38 @@ static int	ft_wh_space(char *str)
 
 int	ft_atoi(char *str)
 {
-	int	i;
-	int	integer;
-	int	minus;
-	int	flag;
+	int	val[4];
 
-	i = ft_wh_space(str);
-	integer = 0;
-	minus = 1;
-	flag = 0;
-	if (str[i] == '-' || str[i] == '+')
-		if (str[i + 1] == '-' || str[i + 1] == '+')
-			return (0);
-	if (str[i] == '-')
-		minus = -1; i++;
-	if (str[i] == '+')
-		i++;
-	while (((*(str + i)) >= 48) && ((*(str + i)) <= 57))
+	val[0] = ft_wh_space(str);
+	val[1] = 0;
+	val[2] = 1;
+	val[3] = 0;
+	if (str[val[0]] == '-')
+		val[2] = -1;
+	if (str[val[0]] == '-' || str[val[0]] == '+')
 	{
-		integer = 10 * integer + (int)(*(str + i) - 48);
-		flag = 1;
-		i++;
+		val[0]++;
+		if (str[val[0] + 1] == '-' || str[val[0] + 1] == '+')
+			return (0);
 	}
-	if (flag != 0)
-		return (minus * integer);
+	while (((*(str + val[0])) >= 48) && ((*(str + val[0])) <= 57))
+	{
+		val[1] = 10 * val[1] + (int)(*(str + val[0]) - 48);
+		val[3] = 1;
+		val[0]++;
+	}
+	if (val[3] != 0)
+		return (val[2] * val[1]);
 	return (0);
 }
-/*
-int    main(void)
-{
-	char* test_1 = "    		-1++0 feqwff";
 
-	printf("ft_atoi(%s): %d\n", test_1, ft_atoi(test_1)) ;
-	printf("atoi(%s): %d\n", test_1, atoi(test_1)) ;
-}
-*/
+// int    main(void)
+// {
+// 	char* test_1 = "    		1++0 feqwff";
+
+// 	printf("ft_atoi(%s): %d\n", test_1, ft_atoi(test_1)) ;
+// 	printf("atoi(%s): %d\n", test_1, atoi(test_1)) ;
+// // 	[fail]: your atoi does not work with positive numbers
+// // [fail]: your atoi does not work with random numbers
+// // [fail]: your atoi is not working with non space invisible char
+// }

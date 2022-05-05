@@ -6,7 +6,7 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 19:19:57 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/04/30 14:29:40 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/05 09:12:38 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ STANDARDS
 */
 int	ft_strcmp(const char *s1, const char *s2)
 {
-	char *t1;
-	char *t2;
-	int i;
+	char	*t1;
+	char	*t2;
+	int		i;
 
 	i = 0;
 	t1 = (char *)s1;
@@ -65,7 +65,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 		if (*(t1 + i) > *(t2 + i))
 			return (1);
 		if (*(t1 + i) < *(t2 + i))
-			return(-1);
+			return (-1);
 		i++;
 	}
 	return (0);

@@ -6,9 +6,11 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 20:10:55 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/02 18:57:21 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/05 09:00:52 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// [crash]: your memmove does not well with NULL as both parameters and size
 
 #include "libft.h"
 
