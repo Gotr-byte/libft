@@ -6,7 +6,7 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 17:35:40 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/05 17:55:09 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/06 11:07:29 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,13 @@
 // Description Allocates (with malloc(3)) and returns a new
 // string, which is the result of the concatenation
 // of ’s1’ and ’s2’.
-
+// [fail]: your strjoin does not work with basic input
+// [fail]: your strjoin does not allocate the memory
+// [fail]: your strjoin does not work with overlap input
+// [fail]: your strjoin does not set \0 to the end of the string
 #include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
 
 static size_t	ft_strlenn(const char *s)
 {
@@ -39,24 +44,41 @@ static size_t	ft_strlenn(const char *s)
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char			*s3;
-	int				incrementator[2];
+	size_t			incrementator[2];
 
-	if (!(malloc(strlenn(s1) + strlenn(s2) + 1)))
+	if (!(malloc((ft_strlenn(s1)) + (ft_strlenn(s2)) + 1)))
 		return (NULL);
-	s3 = (char *)(malloc(strlenn(s1) + strlenn(s2) + 1));
+	s3 = (char *)(malloc(ft_strlenn(s1) + ft_strlenn(s2) + 1));
 	incrementator[0] = 0;
-	incrementator[1] = 1;
-	while (incrementator[0] < strlenn(s1))
+	incrementator[1] = 0;
+	while (incrementator[0] < ft_strlenn(s1))
 	{
 		s3[incrementator[0]] = s1[incrementator[0]];
 		incrementator[0]++;
 	}
-	while (incrementator[1] < strlenn(s2))
+	while (incrementator[1] < ft_strlenn(s2))
 	{
-		s3[incrementator[0]] = s1[incrementator[1]];
+		s3[incrementator[0]] = s2[incrementator[1]];
 		incrementator[0]++;
 		incrementator[1]++;
 	}
 		s3[incrementator[0]] = '\0';
 	return (s3);
 }
+/*
+int	main(void)
+{
+	char	s1[] = "lorem ipsum";
+	char	s2[] = "dolor sit amet";
+	char	*strjoin;
+
+	strjoin = ft_strjoin(s1, NULL);
+	printf ("s1: %s \n", s1);
+	printf ("s2: %s \n", s2);
+	printf ("ft_strjoin(s1, s2): %s \n", strjoin);
+	s1[0] = '\0';
+	printf ("s1: %s \n", s1);
+	printf ("s2: %s \n", s2);
+	printf ("ft_strjoin(s1, s2): %s \n", strjoin);
+}
+*/
