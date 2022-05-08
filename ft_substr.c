@@ -6,7 +6,7 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 15:07:58 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/05 17:32:42 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/08 18:47:17 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,29 +45,28 @@ maximum size ’len’.
 // 	}
 // 	return (i);
 // }
-
 #include "libft.h"
+
+
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*the_substring;
 	size_t	incrementation;
-
-	if (!malloc((len + 1) * sizeof(char)))
+// if start is over the string lenght of source string 
+	if (start >= ft_strlen(s))
+		return (NULL);
+	if ((!malloc((len + 1) * sizeof(char))))
 		return (NULL);
 	the_substring = (char *)malloc((len + 1) * sizeof(char));
 	incrementation = 0;
-	// if (len == 0)
-	// {
-	// 	the_substring = 0;
-	// 	return (the_substring);
-	// }
-	while (incrementation < len)
+// below should handle going over the string length but doesnt
+	while ((incrementation < len) && (*(s + start + incrementation) != '\0'))
 	{
 		*(the_substring + incrementation) = *(s + start + incrementation);
 		incrementation++;
 	}
-	*(the_substring + incrementation) = '\0';
+	*(the_substring + len) = '\0';
 	return (the_substring);
 }
 /*
