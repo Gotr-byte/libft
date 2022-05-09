@@ -6,7 +6,7 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 15:07:58 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/08 18:47:17 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:06:59 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,37 +44,37 @@ maximum size ’len’.
 // 		i++;
 // 	}
 // 	return (i);
+// // }
+// #include "libft.h"
+
+
+
+// char	*ft_substr(char const *s, unsigned int start, size_t len)
+// {
+// 	char	*the_substring;
+// 	size_t	incrementation;
+// // if start is over the string lenght of source string 
+// 	if (start >= ft_strlen(s))
+// 		return (NULL);
+// 	if ((!malloc((len + 1) * sizeof(char))))
+// 		return (NULL);
+// 	the_substring = (char *)malloc((len + 1) * sizeof(char));
+// 	incrementation = 0;
+// // below should handle going over the string length but doesnt
+// 	while ((incrementation < len) && (*(s + start + incrementation) != '\0'))
+// 	{
+// 		*(the_substring + incrementation) = *(s + start + incrementation);
+// 		incrementation++;
+// 	}
+// 	*(the_substring + len) = '\0';
+// 	return (the_substring);
 // }
-#include "libft.h"
+// /*
+// int main(void)
+// {
+// 	char	str[] = "lorem ipsum dolor sit amet";
 
+// 	printf("original string:    %s\n", str);
+// 	printf("substring:          %s\n", ft_substr(str, 400, 20));
+// }
 
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*the_substring;
-	size_t	incrementation;
-// if start is over the string lenght of source string 
-	if (start >= ft_strlen(s))
-		return (NULL);
-	if ((!malloc((len + 1) * sizeof(char))))
-		return (NULL);
-	the_substring = (char *)malloc((len + 1) * sizeof(char));
-	incrementation = 0;
-// below should handle going over the string length but doesnt
-	while ((incrementation < len) && (*(s + start + incrementation) != '\0'))
-	{
-		*(the_substring + incrementation) = *(s + start + incrementation);
-		incrementation++;
-	}
-	*(the_substring + len) = '\0';
-	return (the_substring);
-}
-/*
-int main(void)
-{
-	char	str[] = "lorem ipsum dolor sit amet";
-
-	printf("original string:    %s\n", str);
-	printf("substring:          %s\n", ft_substr(str, 400, 20));
-}
-*/

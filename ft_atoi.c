@@ -6,7 +6,7 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:42:12 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/08 22:24:34 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/09 09:55:09 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_atoi(const char *str)
 {
 	int	val[4];
 
-	val[0] = ft_wh_space(str);
+	val[0] = ft_wh_space((char *)str);
 	val[1] = 0;
 	val[2] = 1;
 	val[3] = 0;

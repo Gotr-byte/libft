@@ -6,7 +6,7 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 11:12:46 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/08 22:19:15 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/09 18:08:20 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,10 @@
 // Description Allocates (with malloc(3)) and returns a copy of
 // ’s1’ with the characters specified in ’set’ removed
 // from the beginning and the end of the string.
-// #include <stdlib.h>
 
-// static size_t	count_trimming_agent(char const *s1, char const *set)
-// {
-// 	size_t	trim_head;
-    //type i;
-	
-// 	trim_head = 0;
-§
-// 	while (s1[trim_head] == set[i])
-// 	{
-// 		trim_head++;
-// 	}
-// 	printf("trim_head: %d", trim_head);
-// 	return (trim_head);
-// }
+// works with space, needs to work with strings
+// #include <stdio.h>
+// #include <stdlib.h>
 
 // static size_t	ft_strlenn(const char *s)
 // {
@@ -50,33 +38,209 @@
 // 	return (i);
 // }
 
+// static size_t	count_prefix(const char *s1, const char *set)
+// {
+// 	size_t	trim_head;
+// 	size_t	i;
+
+// 	trim_head = 0;
+// 	i = 0;
+// 	while (set[i] != '\0')
+// 	{
+// 		while (s1[trim_head] == set[i])
+// 		{
+// 		trim_head++;
+// 		}
+// 	i++;
+// 	if(s1[trim_head] != set[i])
+// 		break;
+// 	}
+// 	return (trim_head);
+// }
+
+// static size_t    count_tail(const char *s1, const char *set, size_t l)
+// {
+//     size_t    trim_tail;
+//     size_t    i;
+
+//     trim_tail = 0;
+//     i = 0;
+//     l = l - 1;
+//     while ( l > 0)
+//     {
+//         while (s1[l-trim_tail] == set[i])
+//         {
+//         trim_tail++;
+//         }
+//     i++;
+// 	l--;
+//     if (s1[l-trim_tail] != set[i])
+//         break;
+//     }
+//     return (trim_tail);
+// }
+
 // char	*ft_strtrim(char const *s1, char const *set)
 // {
-// 	// char	*s1_copy;
-// 	size_t	index;
+// 	size_t	len;
+// 	size_t	prefix;
+// 	size_t	suffix;
+// 	char	*string_trim;
+// 	size_t	i;
 
-// 	// s1_copy = (char *)malloc((ft_strlenn(s1) - (2 * ft_strlenn(set)) + 1) * sizeof(char));
-// 	// if (!(char *)malloc((ft_strlenn(s1) - (2 * ft_strlenn(set)) + 1) * sizeof(char)))
-// 	// return (NULL);
-// 	// s1_copy = (char *)s1;
-// 	index = 0;
-// 	while (s1[index] == *set)
+// 	i = 0;
+// 	len = ft_strlenn(s1);
+// 	prefix = count_prefix(s1, set);
+// 	if (!(prefix == len))
+// 		suffix = count_tail(s1, set, len);
+// 	else
+// 		suffix = 0;
+// 	string_trim = (char *)malloc(ft_strlenn(s1) - suffix - prefix + 1);
+// 	if (!((char *)malloc(ft_strlenn(s1) - suffix - prefix + 1)))
+// 		return (NULL);
+// 	len = ft_strlenn(s1) - suffix - prefix;
+// 	// printf ("suffix: %lu\n", suffix);
+// 	// printf ("prefix: %lu\n", prefix);
+// 	// printf ("len s1: %lu\n", len);
+// 	while (i < len)
 // 	{
-// 		index++;
+// 		string_trim[i] = s1[i + prefix];
+// 		i++;
 // 	}
-// 	printf("index: %d", index)
-// 	// s1_copy[index] = '\0';
-// 	// return (s1_copy);
+// 	string_trim[i] = '\0';
+// 	return (string_trim);
 // }
+/*
+int	main(void)
+{
+	// char *s1 = "lorem \n ipsum \t dolor \n sit \t amet    ";
+	char *s1 = "   lorem   "; // suffix: 3 prefix: 3 len: 12
+	// char *s2 = "lorem ipsum dolor sit amet";
 
-// int	main(void)
-// {
-// 	char	*strtrim;
-// 	int		arg;
-// 	char s1[] = "lorem \n ipsum \t dolor \n sit \t amet";
-// 	char s2[] = "lorem ipsum dolor sit amet";
-// 	printf("test 1 string before: %s", s1);
-// 	printf("test 1: %s params (s1, \" \")", ft_strtrim(s1, " "));
-// 	printf("test 2 string before: %s", s2);
-// 	printf("test 2: %s params (s2, \" \")", ft_strtrim(s1, "te"));
-// }
+	printf("test 1:%s\n", s1);
+	printf("test 1:%s\n", ft_strtrim(s1, " "));
+	// printf("test 2 before:	%s\n", s2);
+	// printf("test 2: 		%s\n", ft_strtrim(s2, "te"));
+}
+*/
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+static size_t    ft_strlenn(const char *s)
+{
+    size_t    i;
+
+    i = 0;
+    while (*(s + i) != '\0')
+    {
+        i++;
+    }
+    return (i);
+}
+
+static size_t    count_prefix(const char *s1, const char *set)
+{
+    size_t    trim_head;
+    size_t    i;
+    size_t    j;
+
+    trim_head = 0;
+    i = 0;
+    j = 0;
+    while (set[j] != '\0')
+    {
+    i = 0;
+        while (set[i] != '\0')
+        {
+        if(s1[j] == set[i])  
+			{
+            trim_head++;
+			j++;
+			i = 0;
+			}
+        i++;
+        }
+    if(s1[j] != set[i])
+        break;
+    }
+    return (trim_head);
+}
+
+static size_t    count_tail(const char *s1, const char *set, size_t l)
+{
+    size_t    trim_tail;
+    size_t    i;
+
+    trim_tail = 0;
+    i = 0;
+    l = l - 1;
+    while (l > 0)
+    {
+		i = 0;
+        while (set[i] != '\0')
+        {
+        printf("index set trim tail: %lu\n", i);
+		if (s1[l] == set[i])
+			{
+            trim_tail++;
+			l--;
+			i = 0;
+			}
+        i++;
+		
+        }
+    if (s1[l] != set[i])
+        break;
+    }
+
+    return (trim_tail);
+}
+
+char    *ft_strtrim(char const *s1, char const *set)
+{
+    size_t    len;
+    size_t    prefix;
+    size_t    suffix;
+    char    *string_trim;
+    size_t    i;
+
+    i = 0;
+    len = ft_strlenn(s1);
+    prefix = count_prefix(s1, set);
+    if (!(prefix == len))
+        suffix = count_tail(s1, set, len);
+    else
+        suffix = 0;
+    string_trim = (char *)malloc(ft_strlenn(s1) - suffix - prefix + 1);
+    if (!((char *)malloc(ft_strlenn(s1) - suffix - prefix + 1)))
+        return (NULL);
+    len = ft_strlenn(s1) - suffix - prefix;
+    printf ("suffix: %lu\n", suffix);
+    printf ("prefix: %lu\n", prefix);
+    printf ("len s1: %lu\n", len);
+    // string_trim = ft_substr((char *)s1, (unsigned int)prefix, len)
+    while (i < len)
+    {
+        string_trim[i] = s1[i + prefix];
+        i++;
+    }
+    
+    string_trim[i] = '\0';
+    return (string_trim);
+}
+
+int    main(void)
+{
+  
+    //char *s1 = "          ";
+    // char *s1 = "lorem \n ipsum \t dolor \n sit \t amet    ";
+    //char *s1 = "   lorem   "; // suffix: 3 prefix: 3 len: 12
+    char *s2 = "etetettteeelorem ipsum dolor sit amtttttttttet";
+
+    //printf("test 1:%s\n", s1);
+    //printf("test 1:%s\n", ft_strtrim(s1, " "));
+    printf("test 2:%s\n", s2);
+    printf("test 2:%s\n", ft_strtrim(s2, "te"));
+}
+*/
