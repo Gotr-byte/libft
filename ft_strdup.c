@@ -6,7 +6,7 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:05:20 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/05 17:38:51 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/10 16:10:53 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,33 +52,16 @@ BSD                            December 5, 2008                            BSD
 */
 #include "libft.h"
 
-static size_t	ft_strlenn(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (*(s + i) != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
-
 char	*ft_strdup(const char *s1)
 {
 	char	*s2;
-	int		increment;
+	size_t	str_size;
 
-	if (malloc((ft_strlenn(s1)+1) * sizeof(char)) == 0)
+	str_size = ft_strlen(s1) + 1;
+	s2 = (char *) malloc((str_size) * sizeof(char));
+	if (malloc((str_size) * sizeof(char)) == 0)
 		return (NULL);
-	increment = 0;
-	s2 = (char *) malloc((ft_strlenn(s1)+1) * sizeof(char));
-	while (s1[increment] != '\0')
-	{
-		s2[increment] = s1[increment];
-		increment++;
-	}
-	s2[increment] = '\0';
+	ft_strlcpy(s2, s1, str_size);
 	return (s2);
 }
 

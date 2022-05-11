@@ -6,7 +6,7 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 15:07:58 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/09 15:06:59 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/10 16:12:32 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ maximum size ’len’.
 // // }
 // #include "libft.h"
 
-
-
 // char	*ft_substr(char const *s, unsigned int start, size_t len)
 // {
 // 	char	*the_substring;
@@ -77,4 +75,3 @@ maximum size ’len’.
 // 	printf("original string:    %s\n", str);
 // 	printf("substring:          %s\n", ft_substr(str, 400, 20));
 // }
-
