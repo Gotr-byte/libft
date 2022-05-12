@@ -6,7 +6,7 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 17:35:40 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/06 11:07:29 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/12 11:45:37 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char			*s3;
 	size_t			incrementator[2];
 
-	if (!(malloc((ft_strlenn(s1)) + (ft_strlenn(s2)) + 1)))
-		return (NULL);
 	s3 = (char *)(malloc(ft_strlenn(s1) + ft_strlenn(s2) + 1));
+	if (!(s3))
+		return (NULL);
 	incrementator[0] = 0;
 	incrementator[1] = 0;
 	while (incrementator[0] < ft_strlenn(s1))

@@ -5,73 +5,48 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 15:07:58 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/10 16:12:32 by pbiederm         ###   ########.fr       */
+/*   Created: 2022/05/11 09:34:05 by pbiederm          #+#    #+#             */
+/*   Updated: 2022/05/12 10:24:03 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-Function name ft_substr
-Prototype char *ft_substr(char const *s, unsigned int start,
-size_t len);
-Turn in files -
-Parameters s: The string from which to create the substring.
-start: The start index of the substring in the
-string ’s’.
-len: The maximum length of the substring.
-Return value The substring.
-NULL if the allocation fails.
-External functs. malloc
-Description Allocates (with malloc(3)) and returns a substring
-from the string ’s’.
-The substring begins at index ’start’ and is of
-maximum size ’len’.
+#include "libft.h"
 
-[fail]: your substr does not work with valid input
-[fail]: your substr does not work with valid input
-[fail]: your substr did not allocate the good size so the \0 test may be false
-[fail]: your substr does not set \0 to the end of the string
-[fail]: your substr does not work for a whole string
-[fail]: your substr does not work when start >= ft_strlen(s)
-*/
-// size_t	ft_strlenn(const char *s)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*the_substring;
+	size_t	incrementation;
+
+	if (start >= ft_strlen(s))
+	{
+		the_substring = (char *)malloc((1) * sizeof(char));
+		the_substring[0] = '\0';
+		return (the_substring);
+	}
+	else if (len - start >= ft_strlen(s))
+		the_substring = (char *)malloc(ft_strlen(s) - start + 1);
+	else
+		the_substring = (char *)malloc((len + 1) * sizeof(char));
+	if (!the_substring)
+		return (NULL);
+	incrementation = 0;
+	while ((incrementation < len) && (s[start + incrementation] != '\0'))
+	{
+		the_substring[incrementation] = s[start + incrementation];
+		incrementation++;
+		if (s[incrementation + start] == '\0')
+			break ;
+	}
+	the_substring[incrementation] = '\0';
+	return (the_substring);
+}
+
+// int main()
 // {
-// 	size_t	i;
-
-// 	i = 0;
-// 	while (*(s + i) != '\0')
-// 	{
-// 		i++;
-// 	}
-// 	return (i);
-// // }
-// #include "libft.h"
-
-// char	*ft_substr(char const *s, unsigned int start, size_t len)
-// {
-// 	char	*the_substring;
-// 	size_t	incrementation;
-// // if start is over the string lenght of source string 
-// 	if (start >= ft_strlen(s))
-// 		return (NULL);
-// 	if ((!malloc((len + 1) * sizeof(char))))
-// 		return (NULL);
-// 	the_substring = (char *)malloc((len + 1) * sizeof(char));
-// 	incrementation = 0;
-// // below should handle going over the string length but doesnt
-// 	while ((incrementation < len) && (*(s + start + incrementation) != '\0'))
-// 	{
-// 		*(the_substring + incrementation) = *(s + start + incrementation);
-// 		incrementation++;
-// 	}
-// 	*(the_substring + len) = '\0';
-// 	return (the_substring);
-// }
-// /*
-// int main(void)
-// {
-// 	char	str[] = "lorem ipsum dolor sit amet";
-
-// 	printf("original string:    %s\n", str);
-// 	printf("substring:          %s\n", ft_substr(str, 400, 20));
-// }
+//   //char *ptr;
+//  // ptr = (char*)malloc(42000);
+//  // ptr = "12345";
+//   printf("substr: %s", ft_substr("tripouille", 0, 42000));
+//   //free(ptr);
+//   return(0);
+//   }

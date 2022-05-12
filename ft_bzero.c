@@ -6,7 +6,7 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 19:17:12 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/02 09:06:39 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/12 07:44:39 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_bzero(void *s, size_t n)
 	i = 0;
 	while (i < n)
 	{
-			*(ptr + i) = 0;
+			ptr[i] = 0;
 			i++;
 	}
 }

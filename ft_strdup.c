@@ -6,7 +6,7 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:05:20 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/10 16:10:53 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/11 10:08:58 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,28 @@ BSD                            December 5, 2008                            BSD
 
 */
 #include "libft.h"
+/*
+static size_t	ft_strlcpy(char *dst, const	char *src, size_t dstsize)
+{
+	size_t	i;
+	size_t	j;
 
+	i = 0;
+	j = ft_strlen(src);
+	if (dstsize != 0)
+	{
+		while (i < dstsize - 1 && *src != '\0')
+		{
+			*dst = *src;
+			dst++;
+			src++;
+			i++;
+		}
+		*dst = '\0';
+	}	
+	return (j);
+}
+*/
 char	*ft_strdup(const char *s1)
 {
 	char	*s2;
@@ -59,7 +80,7 @@ char	*ft_strdup(const char *s1)
 
 	str_size = ft_strlen(s1) + 1;
 	s2 = (char *) malloc((str_size) * sizeof(char));
-	if (malloc((str_size) * sizeof(char)) == 0)
+	if (!s2)
 		return (NULL);
 	ft_strlcpy(s2, s1, str_size);
 	return (s2);
@@ -67,7 +88,10 @@ char	*ft_strdup(const char *s1)
 
 /*
 int	main(void)
-{
-	ft_strdup("nice and sunny weather");
+{	
+	char *s2;
+
+	s2 = ft_strdup("nice and sunny weather");
+	free(s2);
 }
 */
