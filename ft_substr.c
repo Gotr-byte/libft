@@ -6,7 +6,7 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 09:34:05 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/12 10:24:03 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/13 12:52:59 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 //   //char *ptr;
 //  // ptr = (char*)malloc(42000);
 //  // ptr = "12345";
-//   printf("substr: %s", ft_substr("tripouille", 0, 42000));
+//   printf("substr: %s", ft_substr("azzzzzzzzzzzzabbababbbbababdbad", 0, 12));
 //   //free(ptr);
 //   return(0);
 //   }

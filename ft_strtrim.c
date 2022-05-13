@@ -6,7 +6,7 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:48:51 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/12 15:35:23 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:50:39 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,54 +22,65 @@
 // ’s1’ with the characters specified in ’set’ removed
 // from the beginning and the end of the string.
 
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
-size_t    ft_strlen(const char *s)
+static size_t	count_prefix(const char *s1, const char *set)
 {
-    size_t    i;
+	size_t	trim_head;
+	size_t	i;
 
-    i = 0;
-    while (s[i] != '\0')
-    {
-        i++;
-    }
-    return (i);
+	trim_head = 0;
+	i = 0;
+	while (set[i] != '\0' && s1[trim_head] != '\0')
+	{
+		while (s1[trim_head] == set[i])
+		{
+		trim_head++;
+		i = 0;
+		}
+	i++;
+	}
+	return (trim_head);
 }
 
-static size_t    count_prefix(const char *s1, const char *set)
+static size_t	count_suffix(const char *s1, const char *set)
 {
-    size_t    trim_prefix;
-    size_t    i;
-    size_t    j;
-    size_t    ret_count;
-    
-    ret_count = 0;
-    trim_prefix = 0;
-    i = 0;
-    j = 0;
-    while (s1[i] != '\0')
-    {
-        j = 0;
-        while (set[j] != '\0')
-        {
-        if (set[j] == s1[i])
-            trim_prefix++;
-        if (set[j] != s1[i])
-            ret_count++;
-        if (ret_count == ft_strlen(set))
-            return (trim_prefix);
-        j++;
-        }
-    
-        i++;
-    }
-    return (trim_prefix);
+	size_t	trim_tail;
+	size_t	i;
+
+	trim_tail = 0;
+	i = 0;
+	while (set[i] != '\0')
+	{
+		while (s1[ft_strlen(s1) - 1 - trim_tail] == set[i])
+		{
+		trim_tail++;
+		i = 0;
+		}
+	i++;
+	}
+	return (trim_tail);
 }
 
-int main (void)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-printf("count prefix: %zu", count_prefix("babbaabc", "ab")); 
-return(0);
+	char	*trim_str;
+	size_t	pref;
+	size_t	suff;
+
+	suff = 0;
+	pref = count_prefix(s1, set);
+	if (pref != ft_strlen (s1))
+		suff = count_suffix(s1, set);
+	trim_str = ft_substr(s1, pref, ft_strlen (s1) - suff - pref);
+	return (trim_str);
 }
+
+// int	main(void)
+// {
+// 	char	*trim_str;
+
+// 	trim_str = ft_strtrim ("bdaaaazaaaaabddda", "bda");
+// 	printf ("trim_str: %s", trim_str);
+// 	return (0);
+// }
