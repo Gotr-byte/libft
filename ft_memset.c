@@ -6,7 +6,7 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 18:06:34 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/02 09:04:53 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/26 13:40:17 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memset(void *b, int c, size_t len)
 	size_t			i;
 	unsigned char	*ptr;
 
-	ptr = b;
+	ptr = (unsigned char *)b;
 	i = 0;
 	while (i < len)
 	{

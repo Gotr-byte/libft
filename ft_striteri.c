@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 17:05:52 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/12 07:38:03 by pbiederm         ###   ########.fr       */
+/*   Created: 2022/05/18 10:12:02 by pbiederm          #+#    #+#             */
+/*   Updated: 2022/05/25 18:44:02 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t	i;
+	unsigned int	index;
 
-	i = 0;
-	while (s[i] != '\0')
+	index = 0;
+	if (!s)
+		return ;
+	while (s[index] != '\0')
 	{
-		i++;
+		(*f)(index, &s[index]);
+		index++;
 	}
-	return (i);
 }
-/*
-int main(void)
-{
-	ft_strlen("12");
-}
-*/
+// int    main(void)
+// {
+//     char    *str;
+
+//     str = malloc(11 * sizeof(char));
+//     str = "0000000000";
+//     printf("str:                    %s", str);
+//     ft_striteri(str, &iter);
+//     printf("str after ft_striteri:  %s", str);
+// }

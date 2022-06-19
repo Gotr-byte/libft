@@ -6,15 +6,10 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 20:22:47 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/05 16:54:18 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/26 11:31:53 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-#include <unistd.h>
-#include <string.h>
-#include <stdio.h>
-*/
 #include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
@@ -38,12 +33,9 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
-
 /*
 int main()
 {
-// 	[fail]: your strncmp does not cast in unsigned char the diff
-// [fail]: your strncmp does not work with non ascii chars
 	ft_strncmp("1234", "1235", -1)
 
 	printf( "strncmp: %d\n", strncmp("ccccbbb", "aaab", 4*sizeof(char)));

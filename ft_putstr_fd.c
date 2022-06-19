@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 16:58:23 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/25 18:40:40 by pbiederm         ###   ########.fr       */
+/*   Created: 2022/05/18 17:17:19 by pbiederm          #+#    #+#             */
+/*   Updated: 2022/05/18 17:33:50 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
-{
-	int	isprint_flag;
+// Function name ft_putstr_fd
+// Prototype void ft_putstr_fd(char *s, int fd);
+// Turn in files -
+// Parameters s: The string to output.
+// fd: The file descriptor on which to write.
+// Return value None
+// External functs. write
+// Description Outputs the string ’s’ to the given file
+// descriptor.
 
-	isprint_flag = 0;
-	if ((32 <= c) && (c <= 126))
-		isprint_flag = 1;
-	return (isprint_flag);
-}
-/*
-int	main(void)
+#include "libft.h"
+
+void	ft_putstr_fd(char *s, int fd)
 {
-	ft_isprint('a');
-	ft_isprint('B');
-	ft_isprint('3');
-	ft_isprint('9');
-	return(0);
+	write(fd, s, ft_strlen(s));
 }
-*/

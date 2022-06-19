@@ -6,7 +6,7 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 09:34:05 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/13 12:52:59 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/27 13:47:19 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,35 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*the_substring;
-	size_t	incrementation;
+	char	*subs;
+	size_t	i;
 
+	if (!s)
+		return (NULL);
 	if (start >= ft_strlen(s))
 	{
-		the_substring = (char *)malloc((1) * sizeof(char));
-		the_substring[0] = '\0';
-		return (the_substring);
+		subs = (char *)malloc((1) * sizeof(char));
+		subs[0] = '\0';
+		return (subs);
 	}
-	else if (len - start >= ft_strlen(s))
-		the_substring = (char *)malloc(ft_strlen(s) - start + 1);
+	else if (len >= ft_strlen(s + start))
+		subs = (char *)malloc(ft_strlen(s) - start + 1);
 	else
-		the_substring = (char *)malloc((len + 1) * sizeof(char));
-	if (!the_substring)
+		subs = (char *)malloc((len + 1) * sizeof(char));
+	if (!subs)
 		return (NULL);
-	incrementation = 0;
-	while ((incrementation < len) && (s[start + incrementation] != '\0'))
+	i = 0;
+	while ((i < len) && (s[start + i] != '\0'))
 	{
-		the_substring[incrementation] = s[start + incrementation];
-		incrementation++;
-		if (s[incrementation + start] == '\0')
-			break ;
+		subs[i] = s[start + i];
+		i++;
 	}
-	the_substring[incrementation] = '\0';
-	return (the_substring);
+	subs[i] = '\0';
+	return (subs);
 }
-
+// #include <stdio.h>
 // int main()
 // {
-//   //char *ptr;
-//  // ptr = (char*)malloc(42000);
-//  // ptr = "12345";
-//   printf("substr: %s", ft_substr("azzzzzzzzzzzzabbababbbbababdbad", 0, 12));
-//   //free(ptr);
+//   printf("ft_substr: %s", ft_substr("dbad\n", 3, 12));
 //   return(0);
 //   }

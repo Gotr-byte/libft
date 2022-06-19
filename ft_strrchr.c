@@ -6,7 +6,7 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 19:07:27 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/08 13:14:19 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/26 12:20:21 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@ char	*ft_strrchr(const char *s, int c)
 {
 	char	*h;
 	char	*v;
-	char	flag;
 	size_t	t;
 
 	h = (char *)s;
 	t = ft_strlen(s) + 1;
-	flag = 0;
 	while ((t-- + 1) > 0)
 	{
 		if (*(h + t) == (char)c)
@@ -34,7 +32,6 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (NULL);
 }
-
 /*
 int main(void)
 {

@@ -6,13 +6,15 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:48:50 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/04/30 14:28:20 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/25 18:40:28 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+
 int	ft_isascii(int c)
 {
-	int	ascii_flag;
+	int		ascii_flag;
 
 	ascii_flag = 0;
 	if ((0 <= c) && (c <= 127))

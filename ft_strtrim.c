@@ -6,21 +6,9 @@
 /*   By: pbiederm <pbiederm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:48:51 by pbiederm          #+#    #+#             */
-/*   Updated: 2022/05/13 15:50:39 by pbiederm         ###   ########.fr       */
+/*   Updated: 2022/05/19 08:22:18 by pbiederm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// Function name ft_strtrim
-// Prototype char *ft_strtrim(char const *s1, char const *set);
-// Turn in files -
-// Parameters s1: The string to be trimmed.
-// set: The reference set of characters to trim.
-// Return value The trimmed string.
-// NULL if the allocation fails.
-// External functs. malloc
-// Description Allocates (with malloc(3)) and returns a copy of
-// ’s1’ with the characters specified in ’set’ removed
-// from the beginning and the end of the string.
 
 #include "libft.h"
 
@@ -75,7 +63,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	trim_str = ft_substr(s1, pref, ft_strlen (s1) - suff - pref);
 	return (trim_str);
 }
-
 // int	main(void)
 // {
 // 	char	*trim_str;
